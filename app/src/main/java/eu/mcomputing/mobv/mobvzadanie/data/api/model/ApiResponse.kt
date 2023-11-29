@@ -8,16 +8,6 @@ data class UserResponse(val id: String, val name: String, val photo: String)
 
 data class RefreshTokenResponse(val uid: String, val access: String, val refresh: String)
 
-//
-//
-//{
-//    "me": {"uid":"5","lat":"48.1555486000","lon":"17.0513821000","radius":"100"},
-//    "list":[
-//    {"uid":"5","radius":"100", "updated":"2023-10-28 16:24:34","name":"username",
-//      "photo":"photo path without prefix, i.e. photo/1.jpeg  prefix is https://zadanie.mpage.sk/"
-//      }
-//    ]
-//}
 data class GeofenceResponse(
     val me: GeofenceMeResponse,
     val list: List<GeofenceUserResponse>
@@ -38,3 +28,15 @@ data class GeofenceMeResponse(
     val lon: Double,
     val radius: Double
 )
+
+data class GeofenceListResponse(
+    val uid: String,
+    val name: String,
+    val updated: String,
+    val lat: Double,
+    val lon: Double,
+    val radius: Double,
+    val photo: String
+)
+
+data class GeofenceUpdateResponse(val success: String)

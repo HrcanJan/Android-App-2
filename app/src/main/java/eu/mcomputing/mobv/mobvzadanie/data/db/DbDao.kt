@@ -19,7 +19,13 @@ interface DbDao {
     @Query("select * from users")
     fun getUsers(): LiveData<List<UserEntity>?>
 
+    @Query("select * from users")
+    suspend fun getUsersList(): List<UserEntity>?
+
     @Query("delete from users")
     suspend fun deleteUserItems()
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertGeofence(item: GeofenceEntity)
 
 }

@@ -109,8 +109,8 @@ class MapFragment : Fragment() {
         }
     }
 
-
     private fun initLocationComponent() {
+        Log.d("MapFragment","initLocationComponent")
         val locationComponentPlugin = binding.mapView.location
         locationComponentPlugin.updateSettings {
             this.enabled = true
@@ -120,6 +120,7 @@ class MapFragment : Fragment() {
     }
 
     private fun addLocationListeners() {
+        Log.d("MapFragment","addLocationListeners")
         binding.mapView.location.addOnIndicatorPositionChangedListener(
             onIndicatorPositionChangedListener
         )
@@ -128,15 +129,13 @@ class MapFragment : Fragment() {
     }
 
     private val onIndicatorPositionChangedListener = OnIndicatorPositionChangedListener {
-        Log.d("MapFragment", "poloha je $it")
+        Log.d("MapFragment","poloha je $it")
         refreshLocation(it)
     }
 
     private fun refreshLocation(point: Point) {
-        binding.mapView.getMapboxMap()
-            .setCamera(CameraOptions.Builder().center(point).zoom(14.0).build())
-        binding.mapView.gestures.focalPoint =
-            binding.mapView.getMapboxMap().pixelForCoordinate(point)
+        binding.mapView.getMapboxMap().setCamera(CameraOptions.Builder().center(point).zoom(14.0).build())
+        binding.mapView.gestures.focalPoint = binding.mapView.getMapboxMap().pixelForCoordinate(point)
         lastLocation = point
         addMarker(point)
 

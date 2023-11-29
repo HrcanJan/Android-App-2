@@ -8,9 +8,10 @@ import eu.mcomputing.mobv.mobvzadanie.data.db.entities.UserEntity
 
 @Database(
     entities = [
-        UserEntity::class
+        UserEntity::class,
+        GeofenceEntity::class
     ],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 abstract class AppRoomDatabase : RoomDatabase() {
