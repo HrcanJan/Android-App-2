@@ -33,7 +33,7 @@ import eu.mcomputing.mobv.mobvzadanie.data.db.GeofenceBroadcastReceiver
 import eu.mcomputing.mobv.mobvzadanie.databinding.FragmentProfileBinding
 import eu.mcomputing.mobv.mobvzadanie.viewmodels.ProfileViewModel
 import eu.mcomputing.mobv.mobvzadanie.widgets.bottomBar.BottomBar
-import eu.mcomputing.mobv.mobvzadanie.worker.MyWorker
+import eu.mcomputing.mobv.mobvzadanie.workers.MyWorker
 import java.util.concurrent.TimeUnit
 
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
@@ -111,22 +111,13 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 }
             }
 
-            viewModel.sharingLocation.postValue(PreferenceData.getInstance().getSharing(requireContext()))
-
-            viewModel.sharingLocation.observe(viewLifecycleOwner) {
-                it?.let {
-                    if (it) {
-                        if (!hasPermissions(requireContext())) {
-                            viewModel.sharingLocation.postValue(false)
-                            requestPermissionLauncher.launch(
-                                Manifest.permission.ACCESS_FINE_LOCATION
-                            )
-                        } else {
-                            PreferenceData.getInstance().putSharing(requireContext(), true)
-                        }
-                    } else {
-                        PreferenceData.getInstance().putSharing(requireContext(), false)
-                    }
+            bnd.locationSwitch.isChecked = PreferenceData.getInstance().getSharing(requireContext())
+            bnd.locationSwitch.setOnCheckedChangeListener { _, checked ->
+                Log.d("ProfileFragment", "sharing je $checked")
+                if (checked) {
+                    turnOnSharing()
+                } else {
+                    turnOffSharing()
                 }
             }
 
@@ -197,6 +188,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 // Geofences boli úspešne pridané
                 Log.d("ProfileFragment", "geofence vytvoreny")
                 viewModel.updateGeofence(location.latitude, location.longitude, 100.0)
+                runWorker()
             }
             addOnFailureListener {
                 // Chyba pri pridaní geofences
@@ -213,7 +205,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         val geofencingClient = LocationServices.getGeofencingClient(requireActivity())
         geofencingClient.removeGeofences(listOf("my-geofence"))
         viewModel.removeGeofence()
-
+        cancelWorker()
     }
 
     private fun runWorker() {
