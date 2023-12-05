@@ -42,4 +42,11 @@ class AuthViewModel(private val dataRepository: DataRepository) : ViewModel() {
             _userResult.postValue(result.second)
         }
     }
+
+    fun logout() {
+        viewModelScope.launch {
+            _loginResult.postValue("")
+            _userResult.postValue(null)
+        }
+    }
 }
