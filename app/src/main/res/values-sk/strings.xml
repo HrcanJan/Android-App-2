@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">MOBV Zadanie</string>
+    <string name="title_login">Prihlasenie</string>
+    <string name="title_intro">Úvod</string>
+    <string name="title_signup">Registrácia</string>
+    <string name="email">Email:</string>
+    <string name="zadajte_email">Zadajte email</string>
+    <string name="username">Username:</string>
+    <string name="zadajte_username">Zadajte username</string>
+    <string name="heslo">Heslo</string>
+    <string name="zadajte_heslo">Zadajte heslo</string>
+    <string name="zopakujte_heslo">Zopakujte heslo</string>
+    <string name="registruj_sa">Registrujte sa</string>
+    <string name="prihlasit_sa">Prihláste sa</string>
+    <string name="profile">Profíl</string>
+    <string name="nacitaj_profil">Načítaj profíl</string>
+    <string name="odhlasit_sa">Odhlásiť sa</string>
+    <string name="forgot_password">Zabudol som si heslo</string>
+    <string name="send_the_code">Pošli mi kód</string>
+    <string name="new_password">Nové heslo</string>
+    <string name="Reset_password">Resetuj heslo</string>
+    <string name="Reset">Reset</string>
+    <string name="reset">Reset</string>
+    <string name="submit_button_description" />
+    <string name="reset_password">Reset</string>
+    <string name="new_password1">Nové heslo</string>
+    <string name="confirm_password">Potvrdiť heslo</string>
+    <string name="password">Heslo</string>
+    <string name="mobv">MOBV</string>
+</resources>

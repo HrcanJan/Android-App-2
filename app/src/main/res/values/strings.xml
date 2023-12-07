@@ -1,22 +1,20 @@
 <resources>
-    <string name="app_name">MOBV Zadanie</string>
-    <string name="title_login">Prihlasenie</string>
+    <string name="app_name">MOBV Assignment</string>
+    <string name="title_login">Login</string>
     <string name="title_intro">Intro</string>
-    <string name="title_signup">Registracia</string>
-
-    <!--ADD new string_mapbox.xml with only public key in mapbox_access_token-->
+    <string name="title_signup">Registration</string>
     <string name="email">Email:</string>
-    <string name="zadajte_email">Zadajte email</string>
+    <string name="zadajte_email">Enter your email</string>
     <string name="username">Username:</string>
-    <string name="zadajte_username">Zadajte username</string>
-    <string name="heslo">Heslo</string>
-    <string name="zadajte_heslo">Zadajte heslo</string>
-    <string name="zopakujte_heslo">Zopakujte heslo</string>
-    <string name="registruj_sa">Registruj sa</string>
-    <string name="prihlasit_sa">Prihlasit sa</string>
+    <string name="zadajte_username">Enter your username</string>
+    <string name="heslo">Password</string>
+    <string name="zadajte_heslo">Enter your password</string>
+    <string name="zopakujte_heslo">Confirm your password</string>
+    <string name="registruj_sa">Sign up</string>
+    <string name="prihlasit_sa">Login</string>
     <string name="profile">Profile</string>
-    <string name="nacitaj_profil">Nacitaj profil</string>
-    <string name="odhlasit_sa">Odhlasit sa</string>
+    <string name="nacitaj_profil">Load profile</string>
+    <string name="odhlasit_sa">Logout</string>
     <string name="forgot_password">Forgot Password</string>
     <string name="send_the_code">Send the code</string>
     <string name="new_password" />
@@ -25,10 +23,8 @@
     <string name="reset" />
     <string name="submit_button_description" />
     <string name="reset_password">reset</string>
-    <string name="new_password1">new_password</string>
-    <string name="confirm_password">confirm_password</string>
+    <string name="new_password1">New Password</string>
+    <string name="confirm_password">Confirm Password</string>
     <string name="password">Password</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="mobv">MOBV</string>
 </resources>
