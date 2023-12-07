@@ -4,7 +4,7 @@
     <string name="title_intro">Intro</string>
     <string name="title_signup">Registracia</string>
 
-<!--ADD new string_mapbox.xml with only public key in mapbox_access_token-->
+    <!--ADD new string_mapbox.xml with only public key in mapbox_access_token-->
     <string name="email">Email:</string>
     <string name="zadajte_email">Zadajte email</string>
     <string name="username">Username:</string>
@@ -17,4 +17,18 @@
     <string name="profile">Profile</string>
     <string name="nacitaj_profil">Nacitaj profil</string>
     <string name="odhlasit_sa">Odhlasit sa</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="send_the_code">Send the code</string>
+    <string name="new_password" />
+    <string name="Reset_password" />
+    <string name="Reset" />
+    <string name="reset" />
+    <string name="submit_button_description" />
+    <string name="reset_password">reset</string>
+    <string name="new_password1">new_password</string>
+    <string name="confirm_password">confirm_password</string>
+    <string name="password">Password</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="mobv">MOBV</string>
 </resources>

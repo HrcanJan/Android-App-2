@@ -29,6 +29,9 @@
             android:id="@+id/action_login_feed"
             app:popUpToInclusive="true"
             app:destination="@id/feedFragment" />
+        <action
+            android:id="@+id/action_forgot_password"
+            app:destination="@id/forgotPassword" />
     </fragment>
 
     <fragment
@@ -39,6 +42,24 @@
             android:id="@+id/action_signup_feed"
             app:popUpToInclusive="true"
             app:destination="@id/feedFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/forgotPassword"
+        android:name="eu.mcomputing.mobv.mobvzadanie.fragments.ForgotPasswordFragment"
+        android:label="ForgotPasswordFragment">
+        <action
+            android:id="@+id/action_intro_login"
+            app:destination="@id/loginFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/resetPassword"
+        android:name="eu.mcomputing.mobv.mobvzadanie.fragments.ResetPasswordFragment"
+        android:label="ResetPasswordFragment">
+    <action
+        android:id="@+id/action_reset_password_success"
+        app:destination="@id/loginFragment" />
     </fragment>
 
     <fragment
