@@ -37,7 +37,7 @@ class FeedFragment : Fragment(R.layout.fragment_feed) {
             bnd.bottomBar.setActive(BottomBar.FEED)
 
             bnd.feedRecyclerview.layoutManager = LinearLayoutManager(context)
-            val feedAdapter = FeedAdapter()
+            val feedAdapter = FeedAdapter(requireContext())
             bnd.feedRecyclerview.adapter = feedAdapter
 
             // Pozorovanie zmeny hodnoty
