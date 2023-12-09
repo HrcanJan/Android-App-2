@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -27,11 +28,18 @@ import com.mapbox.maps.plugin.locationcomponent.OnIndicatorPositionChangedListen
 import com.mapbox.maps.plugin.locationcomponent.location
 import eu.mcomputing.mobv.mobvzadanie.databinding.FragmentMapBinding
 import eu.mcomputing.mobv.mobvzadanie.widgets.bottomBar.BottomBar
+import androidx.lifecycle.lifecycleScope
+import com.google.gson.Gson
+import com.google.gson.JsonParser
+import eu.mcomputing.mobv.mobvzadanie.data.DataRepository
+import eu.mcomputing.mobv.mobvzadanie.data.db.entities.UserEntity
+import kotlinx.coroutines.launch
 
 
 class MapFragment : Fragment() {
     private lateinit var binding: FragmentMapBinding
     private var selectedPoint: CircleAnnotation? = null
+    private var otherPoints: CircleAnnotation? = null
     private var lastLocation: Point? = null
     private lateinit var annotationManager: CircleAnnotationManager
 
@@ -138,11 +146,45 @@ class MapFragment : Fragment() {
         binding.mapView.gestures.focalPoint = binding.mapView.getMapboxMap().pixelForCoordinate(point)
         lastLocation = point
         addMarker(point)
+    }
 
+    private fun displayUsers() {
+        if(otherPoints === null) {
+            lifecycleScope.launch {
+                val usersList = DataRepository.getInstance(requireContext()).getUsersList()
+                if(usersList !== null){
+                    for (userEntity in usersList) {
+                        val point = Point.fromLngLat(userEntity.lon, userEntity.lat)
+                        val circleAnnotationOptions = CircleAnnotationOptions()
+                            .withPoint(point)
+                            .withCircleColor("#ff0000")
+                            .withCircleRadius(8.0)
+                            .withCircleStrokeColor("#ffffff")
+                            .withCircleStrokeWidth(2.0)
+                            .withData(JsonParser.parseString(Gson().toJson(userEntity)))
+                        otherPoints = annotationManager.create(circleAnnotationOptions)
+                    }
+                }
+            }
+        } else {
+            otherPoints?.let{
+                // Add click listener to each annotation
+                annotationManager.addClickListener() { annotation ->
+                    var thing = annotation.getData()
+                    if(thing !== null){
+                        val userEntity = Gson().fromJson(thing, UserEntity::class.java)
+                        if(userEntity !== null){
+                            Toast.makeText(requireContext(), "Annotation clicked with ID: ${userEntity.name}", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                    true
+                }
+                annotationManager.update(it)
+            }
+        }
     }
 
     private fun addMarker(point: Point) {
-
         if (selectedPoint == null) {
             annotationManager.deleteAll()
             val pointAnnotationOptions = CircleAnnotationOptions()
@@ -159,6 +201,7 @@ class MapFragment : Fragment() {
                 annotationManager.update(it)
             }
         }
+        displayUsers()
     }
 
 

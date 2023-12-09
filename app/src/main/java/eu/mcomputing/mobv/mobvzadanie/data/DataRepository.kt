@@ -189,33 +189,6 @@ class DataRepository private constructor(
         }
     }
 
-//    suspend fun apiListGeofence(): String {
-//        try {
-//            val response = service.listGeofence()
-//
-//            if (response.isSuccessful) {
-//                response.body()?.let {
-//                    val users = it.map {
-//                        UserEntity(
-//                            it.uid, it.name, it.updated,
-//                            it.lat, it.lon, it.radius, it.photo
-//                        )
-//                    }
-//                    cache.insertUserItems(users)
-//                    return ""
-//                }
-//            }
-//
-//            return "Failed to load users"
-//        } catch (ex: IOException) {
-//            ex.printStackTrace()
-//            return "Check internet connection. Failed to load users."
-//        } catch (ex: Exception) {
-//            ex.printStackTrace()
-//        }
-//        return "Fatal error. Failed to load users."
-//    }
-
     suspend fun apiGeofenceUsers(): String {
         try {
             val response = service.listGeofence()
