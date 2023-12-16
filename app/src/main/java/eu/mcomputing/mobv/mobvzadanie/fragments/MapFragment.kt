@@ -168,7 +168,6 @@ class MapFragment : Fragment() {
             }
         } else {
             otherPoints?.let{
-                // Add click listener to each annotation
                 annotationManager.addClickListener() { annotation ->
                     var thing = annotation.getData()
                     if(thing !== null){

@@ -19,7 +19,7 @@ class TokenAuthenticator(val context: Context) : Authenticator {
         ) {
             //here we do not need a authorization token
         } else {
-            //if the authorization token was required, but it was rejected from REST API, it is probably outdated
+
             if (response.code == 401) {
                 val userItem = PreferenceData.getInstance().getUser(context)
                 userItem?.let { user ->

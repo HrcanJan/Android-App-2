@@ -17,17 +17,14 @@ class FeedAdapter(context : Context) : RecyclerView.Adapter<FeedAdapter.FeedView
     private var items: List<UserEntity> = listOf()
     private val context: Context = context
 
-    // ViewHolder poskytuje odkazy na zobrazenia v každej položke
     class FeedViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
-    // Táto metóda vytvára nový ViewHolder
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FeedViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.feed_item, parent, false)
         return FeedViewHolder(view)
     }
 
-    // Táto metóda prepojí dáta s ViewHolderom
     override fun onBindViewHolder(holder: FeedViewHolder, position: Int) {
         holder.itemView.findViewById<TextView>(R.id.item_text).text = items[position].name
         val photoName = items[position].photo
@@ -41,7 +38,6 @@ class FeedAdapter(context : Context) : RecyclerView.Adapter<FeedAdapter.FeedView
 
     }
 
-    // Vracia počet položiek v zozname
     override fun getItemCount() = items.size
 
     fun updateItems(newItems: List<UserEntity>) {
